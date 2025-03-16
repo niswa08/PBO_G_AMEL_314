@@ -1,38 +1,27 @@
-import java.util.Scanner;
-import java.time.LocalDate;
-
 public class Main {
     public static void main(String[] args) {
-        // Membuat objek Scanner untuk membaca input
-        Scanner scanner = new Scanner(System.in);
+        // Membuat objek rekening1
+        RekeningBank rekening1 = new RekeningBank("123456789", "Nama Saya", 500000);
 
-        // Meminta input nama
-        System.out.print("Masukkan nama Anda: ");
-        String nama = scanner.nextLine();
+        // Membuat objek rekening2
+        RekeningBank rekening2 = new RekeningBank("987654321", "Nama Teman", 300000);
 
-        // Meminta input jenis kelamin
-        System.out.print("Masukkan jenis kelamin (P/L): ");
-        char jenisKelamin = scanner.next().charAt(0);
+        // Menampilkan informasi awal
+        System.out.println("Informasi Rekening 1:");
+        rekening1.tampilkanInfo();
 
-        // Meminta input tahun lahir
-        System.out.print("Masukkan tahun lahir Anda: ");
-        int tahunLahir = scanner.nextInt();
+        System.out.println("Informasi Rekening 2:");
+        rekening2.tampilkanInfo();
 
-        // Menghitung umur berdasarkan tahun lahir
-        int tahunSekarang = LocalDate.now().getYear();
-        int umur = tahunSekarang - tahunLahir;
+        // Melakukan transaksi pada rekening1
+        System.out.println("Transaksi pada Rekening 1:");
+        rekening1.setorUang(200000);
+        rekening1.tarikUang(150000);
 
-        // Menentukan jenis kelamin
-        String jenisKelaminStr = (jenisKelamin == 'L' || jenisKelamin == 'l') ? "Laki-laki" :
-                (jenisKelamin == 'P' || jenisKelamin == 'p') ? "Perempuan" : "Tidak valid";
+        // Melakukan transaksi pada rekening2
+        System.out.println("Transaksi pada Rekening 2:");
+        rekening2.setorUang(100000);
+        rekening2.tarikUang(500000);
 
-        // Menampilkan hasil
-        System.out.println("\nData Diri Anda:");
-        System.out.println("Nama: " + nama);
-        System.out.println("Jenis Kelamin: " + jenisKelaminStr);
-        System.out.println("Umur: " + umur + " tahun");
-
-        // Menutup scanner setelah selesai
-        scanner.close();
     }
 }
